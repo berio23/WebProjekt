@@ -52,7 +52,7 @@ function request(filename,create){
 					var path = '${pageContext.request.contextPath}/images/' + rezeptID + '.jpg';
 					var bild = '<td align="center" width="300"><image width="300px" height="300px" src ="' + path +'"></td>';
 					
-					newDiv.innerHTML = '<form action="IngredientsCalc" method="get"> <input type="hidden" name="calc" value="true"><input type="hidden" name="goTo" value="/KategorienNew.jsp"><table border="1" id="tablette" ><tr><td><button type="button" onclick="buttonprevious()">Previous</button></td>' + bild + tempstring + '<td valign="bottom"> <input name="addToList" class="add" type="submit" value="+"></td><td><button type="button" onclick="buttonnext()">Next</button></td>	</tr></table> </form>';
+					newDiv.innerHTML = '<form action="IngredientsCalc" method="get"> <input type="hidden" name="calc" value="true"><input type="hidden" name="goTo" value="/HomepageNew.jsp"><table border="1" id="tablette" ><tr><td><button type="button" onclick="buttonprevious()">Previous</button></td>' + bild + tempstring + '<td valign="bottom"> <input name="addToList" class="add" type="submit" value="+"></td><td><button type="button" onclick="buttonnext()">Next</button></td>	</tr></table> </form>';
 					
 					var beschreibung = document.getElementsByClassName("be"); // Rezeptzubereitung ausblenden
 
@@ -213,43 +213,31 @@ function buttonprevious(){
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     <div id="innereinkauf">
+     <form action="IngredientsCalc" method="get">	
+<input type="hidden" name="calc" value="deleteAll">
+<input type="hidden" name="goTo" value="/HomepageNew.jsp">
+ <input type="submit" value="Alles löschen">
+ </form> 
+ 			<jsp:useBean id="liste" class="beans.Einkaufsliste" scope="session"/> <!-- Ändern zur "session" -->
+ 
                         <img id="bild"
                             src="https://image.flaticon.com/icons/png/128/590/590510.png"
                             alt="Einkaufsliste" width="40px" height="40px">
-                        <ul>	 
-		
-				<!-- Ausgabe der alten Einkaufsliste -->
-				 <div id="checklist">
-			<jsp:useBean id="liste" class="beans.Einkaufsliste" scope="application"/> <!-- Ändern zur "session" -->
-	 
-		
+                        <ul class="list-group list-group-flush">
 				<!-- Ausgabe der alten Einkaufsliste -->
 				<% int counter=0; %> 
 	   			<c:forEach items="${liste.result}" var="el">
 	   				<% if( counter<17){ %> <!-- nur die ersten 17 Zutaten sollten gezeigt werden, damit die Liste nicht zu voll wird -->
 	   					<% counter++; %>	   			
-	   					<input type="checkbox" ><label ><c:out value="${el}"/></label> 
+	   					<li class="list-group-item"><input type="checkbox"  ><label style="padding-left:10px;" ><c:out value="${el}"/></label> </li>
 	   				<% } %>
 	   				<% if( counter==17){ %>
 	   					<% counter++; %>	   			
-	   					<input type="checkbox" ><label ><c:out value="........"/></label>  
+	   					<li class="list-group-item"><input type="checkbox" ><label ><c:out value="........"/></label></li>
 	   				<% } %> 	
 				</c:forEach>
-			
-				
-	   			
-</div>
-
-
-
-                        </ul>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Tomate</li>
-                          <li class="list-group-item">Apfel</li>
-                          <li class="list-group-item">Salat</li>
-                          <li class="list-group-item">Fisch</li>
-                          <li class="list-group-item">Steak</li>
-                        </ul>
+		</ul>
+                        
                     </div><form>
                             
   <button id="hinzu" class="btn-hover color-8" formaction="EinkaufslisteAnzeigen.html">Einkaufsliste erstellen</button>

@@ -677,8 +677,7 @@ body {
 #innereinkauf {
     width: 320px;
     height: 300px;
-    margin: 9px;
-    padding: 15px;
+
 }
 
 #hinzu {
@@ -845,7 +844,6 @@ div.scrollPage {
 	height: 300px;
 	margin-left: 70px;
 	
-	padding: 15px;
 	border-style: solid;
 	border-width: 3px;
 	border-image: linear-gradient(to right, #11998e, #38ef7d);
@@ -856,11 +854,12 @@ div.scrollPage {
 #rezeptBlock{
 	color:black;
 }
+#tableRezept{
+	border:5px solid red;
+}
 #einkaufdiv{
-	position:absolute;
-	right:0px;
-	padding-right:20em;
-	top:15em;
+	position:relative;
+	padding-left: 110%;
 }
 .cont {
  
@@ -868,7 +867,7 @@ div.scrollPage {
    
     margin-left:115px;
     margin-right:150px;
-    
+    padding-top:5px;
 	align-items: center;
 	background-color: #2aa222 !important;
  
@@ -878,25 +877,18 @@ div.scrollPage {
     color: #6fb07f
     }
  
-#innereinkauf{
-	
-	margin-top:3em;
-}
+
 
 #thebuttons{
-	padding-left:50px;
+	margin-left:7em;
 }
-
 #rezeptvorschau{
-	display:inline-block;
-	padding-bottom:10px;
+	padding-right:5px;
 }
 #einkaufsliste{
-	display:inline-block;
+	padding-right:5px;
 }
-#home{
-	display:inline-block;
-}
+
  
 #bild {
     position: absolute;
